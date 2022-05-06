@@ -27,6 +27,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#CommenteSuperbowl -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#CommenteSuperbowl">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraine_Equipe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraine_Equipe">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans">
@@ -45,18 +63,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_EST"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_NORD"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
@@ -67,7 +73,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#remporte">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:ObjectProperty>
     
 
@@ -138,6 +144,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#CommenteSuperbowl"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Champion -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Champion">
@@ -145,7 +167,7 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#remporte"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
             </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
@@ -176,26 +198,36 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraine_Equipe"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe">
         <owl:equivalentClass>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
-                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
-                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
-                    </owl:Restriction>
-                </owl:unionOf>
-            </owl:Class>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+            </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
     
 
 
@@ -237,17 +269,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#SuperBowl -->
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#SuperBowl"/>
-    
-
-
-    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#SuperBowl"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     
 
 
@@ -262,11 +286,19 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Al_Michaels -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Al_Michaels">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LVI_edition"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arizona_Cardinals -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arizona_Cardinals">
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST"/>
     </owl:NamedIndividual>
     
 
@@ -383,7 +415,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#III_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#III_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -391,7 +423,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#II_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#II_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -399,7 +431,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -407,7 +439,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IX_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IX_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -415,7 +447,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#I_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#I_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -438,6 +470,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jim_Nantz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jim_Nantz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LV_edition"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kansas_City_Chiefs -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kansas_City_Chiefs">
@@ -450,7 +491,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -458,7 +499,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -466,7 +507,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -474,7 +515,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -482,7 +523,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LVI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LVI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -490,7 +531,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -498,7 +539,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#L_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#L_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -641,7 +682,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -649,7 +690,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -657,7 +698,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -665,7 +706,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#V_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#V_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -682,7 +723,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -690,7 +731,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -698,7 +739,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIVL_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIVL_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -706,7 +747,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -714,7 +755,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIX_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIX_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -722,7 +763,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -730,7 +771,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -738,7 +779,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -746,7 +787,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -754,7 +795,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIX_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIX_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -762,7 +803,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -770,7 +811,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -778,7 +819,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -786,7 +827,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -794,7 +835,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -802,7 +843,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XL_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XL_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -810,7 +851,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -818,7 +859,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -826,7 +867,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -834,7 +875,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -842,7 +883,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -850,7 +891,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -858,7 +899,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -866,7 +907,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIX_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIX_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -874,7 +915,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -882,7 +923,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -890,7 +931,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -898,7 +939,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -906,7 +947,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -914,7 +955,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -922,7 +963,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -930,7 +971,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -938,7 +979,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIX_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIX_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -946,7 +987,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -954,7 +995,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVIII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVIII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -962,7 +1003,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVII_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVII_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -970,7 +1011,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVI_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVI_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -978,7 +1019,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXV_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXV_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -986,7 +1027,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXX_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXX_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -994,7 +1035,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XX_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XX_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
     
 
@@ -1002,7 +1043,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#X_edition -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#X_edition">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
