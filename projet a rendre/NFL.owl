@@ -214,6 +214,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division">
+        <owl:equivalentClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFL"/>
     </owl:Class>
     
@@ -221,7 +222,20 @@
 
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Draft -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Draft"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Draft">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#EtudieA"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Universite"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Va_Rejoindre_Equipe"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 
@@ -337,6 +351,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arizona_Cardinals -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arizona_Cardinals">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_OUEST"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
     </owl:NamedIndividual>
     
@@ -721,7 +736,6 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Trevon_Walker -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Trevon_Walker">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Draft"/>
         <EtudieA rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_de_Géorgie"/>
         <Va_Rejoindre_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jacksonville_Jaguars"/>
     </owl:NamedIndividual>
