@@ -109,17 +109,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_EST -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_EST">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_NORD"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_OUEST"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_SUD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
     </owl:Class>
     
 
@@ -127,16 +117,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_NORD -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_NORD">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_OUEST"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_SUD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
     </owl:Class>
     
 
@@ -144,15 +125,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_OUEST -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_OUEST">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_SUD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
     </owl:Class>
     
 
@@ -160,14 +133,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_SUD -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_SUD">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
     </owl:Class>
     
 
@@ -189,32 +155,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_EST"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_NORD"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_OUEST"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_SUD"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFL"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
     </owl:Class>
     
 
@@ -222,61 +163,46 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_EST"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_NORD"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFL"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
     </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFL"/>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_EST -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_EST">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_NORD"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
     </owl:Class>
     
 
@@ -284,16 +210,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_NORD -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_NORD">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
     </owl:Class>
     
 
@@ -301,15 +218,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
     </owl:Class>
     
 
@@ -317,14 +226,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC"/>
     </owl:Class>
     
 
