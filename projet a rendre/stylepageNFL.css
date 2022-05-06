@@ -1,0 +1,35 @@
+body{
+	text-align : center;
+	background-color: LightGrey;
+}
+div.a{
+	background-color: DarkSlateGray;
+	text-align: center;
+	width: 500px;
+	height: 100px;
+	padding: 5px;
+	border: 1px solid blue;
+	margin: 0;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 150px;
+}
+div.b{
+	background-color: DarkSlateGray;
+	text-align: center;
+	width: 500px;
+	height: 100px;
+	padding: 5px;
+	border: 1px solid blue;
+	margin: 0;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50%;
+}
+
+élément {
+  display: grid;
+  grid-template-columns: minmax(0px, 600px) auto;
+  align-items: center;
