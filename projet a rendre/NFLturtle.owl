@@ -1,0 +1,714 @@
+@prefix : <http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2> .
+
+<http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#A_perdu
+:A_perdu rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans
+:Joue_dans rdf:type owl:ObjectProperty ;
+           rdfs:domain :AFC_EST ,
+                       :AFC_NORD ,
+                       :AFC_OUEST ,
+                       :AFC_SUD ;
+           rdfs:range :Conference_AFC .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Participe
+:Participe rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Play_in
+:Play_in rdf:type owl:ObjectProperty ;
+         rdfs:domain :NFC_EST ,
+                     :NFC_NORD ,
+                     :NFC_OUEST ,
+                     :NFC_SUD ;
+         rdfs:range :Conference_NFC .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede
+:Possede rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#remporte
+:remporte rdf:type owl:ObjectProperty ;
+          rdfs:domain :Equipe ;
+          rdfs:range :Superbowl_Edition .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_ete_cree_en
+:a_ete_cree_en rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_gagne
+:a_gagne rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_EST
+:AFC_EST rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :Joue_dans ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Conference_AFC
+                             ] ;
+         rdfs:subClassOf :Division ;
+         owl:disjointWith :AFC_NORD ,
+                          :AFC_OUEST ,
+                          :AFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_NORD
+:AFC_NORD rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :Joue_dans ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Conference_AFC
+                              ] ;
+          rdfs:subClassOf :Division ;
+          owl:disjointWith :AFC_OUEST ,
+                           :AFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_OUEST
+:AFC_OUEST rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :Joue_dans ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Conference_AFC
+                               ] ;
+           rdfs:subClassOf :Division ;
+           owl:disjointWith :AFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_SUD
+:AFC_SUD rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :Joue_dans ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Conference_AFC
+                             ] ;
+         rdfs:subClassOf :Division .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Champion
+:Champion rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :remporte ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Superbowl_Edition
+                              ] .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC
+:Conference_AFC rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :AFC_EST
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :AFC_NORD
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :AFC_OUEST
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :AFC_SUD
+                                    ] ;
+                rdfs:subClassOf :NFL ;
+                owl:disjointWith :Conference_NFC .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC
+:Conference_NFC rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :NFC_EST
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :NFC_NORD
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :NFC_OUEST
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Possede ;
+                                      owl:someValuesFrom :NFC_SUD
+                                    ] ;
+                rdfs:subClassOf :NFL .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Division
+:Division rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe
+:Equipe rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_EST
+:NFC_EST rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :Play_in ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Conference_NFC
+                             ] ;
+         rdfs:subClassOf :Division ;
+         owl:disjointWith :NFC_NORD ,
+                          :NFC_OUEST ,
+                          :NFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_NORD
+:NFC_NORD rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :Play_in ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Conference_NFC
+                              ] ;
+          rdfs:subClassOf :Division ;
+          owl:disjointWith :NFC_OUEST ,
+                           :NFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST
+:NFC_OUEST rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :Play_in ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Conference_NFC
+                               ] ;
+           rdfs:subClassOf :Division ;
+           owl:disjointWith :NFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD
+:NFC_SUD rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :Play_in ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Conference_NFC
+                             ] ;
+         rdfs:subClassOf :Division .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFL
+:NFL rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#SuperBowl
+:SuperBowl rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl_Edition
+:Superbowl_Edition rdf:type owl:Class ;
+                   rdfs:subClassOf :SuperBowl .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arizona_Cardinals
+:Arizona_Cardinals rdf:type owl:NamedIndividual ,
+                            :Equipe ,
+                            :NFC_OUEST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Atlanta_Falcons
+:Atlanta_Falcons rdf:type owl:NamedIndividual ,
+                          :Equipe ,
+                          :NFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Baltimore_Ravens
+:Baltimore_Ravens rdf:type owl:NamedIndividual ,
+                           :AFC_NORD ,
+                           :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Buffalo_Bills
+:Buffalo_Bills rdf:type owl:NamedIndividual ,
+                        :AFC_EST ,
+                        :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Carolina_Panthers
+:Carolina_Panthers rdf:type owl:NamedIndividual ,
+                            :Equipe ,
+                            :NFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Chicago_Bears
+:Chicago_Bears rdf:type owl:NamedIndividual ,
+                        :Equipe ,
+                        :NFC_NORD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Cincinnati_Bengals
+:Cincinnati_Bengals rdf:type owl:NamedIndividual ,
+                             :AFC_NORD ,
+                             :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Cleveland_Browns
+:Cleveland_Browns rdf:type owl:NamedIndividual ,
+                           :AFC_NORD ,
+                           :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dallas_Cowboys
+:Dallas_Cowboys rdf:type owl:NamedIndividual ,
+                         :Equipe ,
+                         :NFC_EST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Denver_Broncos
+:Denver_Broncos rdf:type owl:NamedIndividual ,
+                         :AFC_OUEST ,
+                         :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Detroit_Lions
+:Detroit_Lions rdf:type owl:NamedIndividual ,
+                        :Equipe ,
+                        :NFC_NORD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Green_Bay_Packers
+:Green_Bay_Packers rdf:type owl:NamedIndividual ,
+                            :Equipe ,
+                            :NFC_NORD ;
+                   :remporte :I_edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Houston_Texans
+:Houston_Texans rdf:type owl:NamedIndividual ,
+                         :AFC_SUD ,
+                         :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#III_edition
+:III_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#II_edition
+:II_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IV_edition
+:IV_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IX_edition
+:IX_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#I_edition
+:I_edition rdf:type owl:NamedIndividual ,
+                    :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Indianapolis_Colts
+:Indianapolis_Colts rdf:type owl:NamedIndividual ,
+                             :AFC_SUD ,
+                             :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jacksonville_Jaguars
+:Jacksonville_Jaguars rdf:type owl:NamedIndividual ,
+                               :AFC_SUD ,
+                               :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kansas_City_Chiefs
+:Kansas_City_Chiefs rdf:type owl:NamedIndividual ,
+                             :AFC_OUEST ,
+                             :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIII_edition
+:LIII_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LII_edition
+:LII_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIV_edition
+:LIV_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LI_edition
+:LI_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LVI_edition
+:LVI_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LV_edition
+:LV_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#L_edition
+:L_edition rdf:type owl:NamedIndividual ,
+                    :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Los_Angeles_Chargers
+:Los_Angeles_Chargers rdf:type owl:NamedIndividual ,
+                               :AFC_OUEST ,
+                               :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Los_Angeles_Rams
+:Los_Angeles_Rams rdf:type owl:NamedIndividual ,
+                           :Equipe ,
+                           :NFC_OUEST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Miami_Dolphins
+:Miami_Dolphins rdf:type owl:NamedIndividual ,
+                         :AFC_EST ,
+                         :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Minnesota_Vikings
+:Minnesota_Vikings rdf:type owl:NamedIndividual ,
+                            :Equipe ,
+                            :NFC_NORD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_England_Patriots
+:New_England_Patriots rdf:type owl:NamedIndividual ,
+                               :AFC_EST ,
+                               :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_Orleans_Saints
+:New_Orleans_Saints rdf:type owl:NamedIndividual ,
+                             :Equipe ,
+                             :NFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_York_Giants
+:New_York_Giants rdf:type owl:NamedIndividual ,
+                          :Equipe ,
+                          :NFC_EST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_York_Jets
+:New_York_Jets rdf:type owl:NamedIndividual ,
+                        :AFC_EST ,
+                        :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Oakland_Raiders
+:Oakland_Raiders rdf:type owl:NamedIndividual ,
+                          :AFC_OUEST ,
+                          :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Philadelphia_Eagles
+:Philadelphia_Eagles rdf:type owl:NamedIndividual ,
+                              :Equipe ,
+                              :NFC_EST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Pittsburgh_Steelers
+:Pittsburgh_Steelers rdf:type owl:NamedIndividual ,
+                              :AFC_NORD ,
+                              :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#San_Francisco_49ers
+:San_Francisco_49ers rdf:type owl:NamedIndividual ,
+                              :Equipe ,
+                              :NFC_OUEST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Seattle_Seahawks
+:Seattle_Seahawks rdf:type owl:NamedIndividual ,
+                           :Equipe ,
+                           :NFC_OUEST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tampa_Bay_Buccaneers
+:Tampa_Bay_Buccaneers rdf:type owl:NamedIndividual ,
+                               :Equipe ,
+                               :NFC_SUD .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tennessee_Titans
+:Tennessee_Titans rdf:type owl:NamedIndividual ,
+                           :AFC_SUD ,
+                           :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VIII_edition
+:VIII_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VII_edition
+:VII_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VI_edition
+:VI_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#V_edition
+:V_edition rdf:type owl:NamedIndividual ,
+                    :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Washington_Redskins
+:Washington_Redskins rdf:type owl:NamedIndividual ,
+                              :Equipe ,
+                              :NFC_EST .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIII_edition
+:XIII_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XII_edition
+:XII_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIVL_edition
+:XIVL_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIV_edition
+:XIV_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIX_edition
+:XIX_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XI_edition
+:XI_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIII_edition
+:XLIII_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLII_edition
+:XLII_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIV_edition
+:XLIV_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIX_edition
+:XLIX_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLI_edition
+:XLI_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVIII_edition
+:XLVIII_edition rdf:type owl:NamedIndividual ,
+                         :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVII_edition
+:XLVII_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVI_edition
+:XLVI_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLV_edition
+:XLV_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XL_edition
+:XL_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVIII_edition
+:XVIII_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVII_edition
+:XVII_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVI_edition
+:XVI_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XV_edition
+:XV_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIII_edition
+:XXIII_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXII_edition
+:XXII_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIV_edition
+:XXIV_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIX_edition
+:XXIX_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXI_edition
+:XXI_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVIII_edition
+:XXVIII_edition rdf:type owl:NamedIndividual ,
+                         :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVII_edition
+:XXVII_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVI_edition
+:XXVI_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXV_edition
+:XXV_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIII_edition
+:XXXIII_edition rdf:type owl:NamedIndividual ,
+                         :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXII_edition
+:XXXII_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIV_edition
+:XXXIV_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIX_edition
+:XXXIX_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXI_edition
+:XXXI_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVIII_edition
+:XXXVIII_edition rdf:type owl:NamedIndividual ,
+                          :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVII_edition
+:XXXVII_edition rdf:type owl:NamedIndividual ,
+                         :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVI_edition
+:XXXVI_edition rdf:type owl:NamedIndividual ,
+                        :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXV_edition
+:XXXV_edition rdf:type owl:NamedIndividual ,
+                       :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXX_edition
+:XXX_edition rdf:type owl:NamedIndividual ,
+                      :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XX_edition
+:XX_edition rdf:type owl:NamedIndividual ,
+                     :Superbowl_Edition .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#X_edition
+:X_edition rdf:type owl:NamedIndividual ,
+                    :Superbowl_Edition .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
