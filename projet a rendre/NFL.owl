@@ -40,7 +40,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraine_Equipe">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_Entraineur"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
     </owl:ObjectProperty>
@@ -113,9 +112,8 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_Entraineur -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_Entraineur">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
     </owl:ObjectProperty>
     
 
@@ -142,7 +140,9 @@
 
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_etat -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_etat"/>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_etat">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -201,10 +201,15 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#CommenteSuperbowl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#CommenteSuperbowl"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </owl:equivalentClass>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
@@ -256,16 +261,19 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Draft">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#EtudieA"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Universite"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Va_Rejoindre_Equipe"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#EtudieA"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Universite"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Va_Rejoindre_Equipe"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
     
@@ -275,10 +283,15 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraine_Equipe"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraine_Equipe"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFL"/>
     </owl:Class>
@@ -362,6 +375,12 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl">
@@ -390,7 +409,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Al_Michaels -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Al_Michaels">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LII_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LVI_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIII_edition"/>
@@ -420,6 +439,8 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Atlanta_Falcons">
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
+        <a_etat>Géorgie</a_etat>
+        <a_ete_cree_en>30 juin 1965</a_ete_cree_en>
     </owl:NamedIndividual>
     
 
@@ -429,6 +450,8 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Baltimore_Ravens">
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_NORD"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
+        <a_etat>Maryland</a_etat>
+        <a_ete_cree_en rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1996</a_ete_cree_en>
     </owl:NamedIndividual>
     
 
@@ -447,10 +470,19 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Blitz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Blitz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Seattle_Seahawks"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Brandon_Stanley -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Brandon_Stanley">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <Entraine_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Los_Angeles_Chargers"/>
     </owl:NamedIndividual>
     
@@ -466,11 +498,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Captain_Fear -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Captain_Fear">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tampa_Bay_Buccaneers"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Carolina_Panthers -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Carolina_Panthers">
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
+        <a_etat>Caroline du Nord</a_etat>
+        <a_ete_cree_en rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1995</a_ete_cree_en>
     </owl:NamedIndividual>
     
 
@@ -487,7 +530,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Chris_Collinsworth -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Chris_Collinsworth">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
     </owl:NamedIndividual>
     
 
@@ -513,7 +556,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Curt_Gowdy -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Curt_Gowdy">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#III_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IX_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VII_edition"/>
@@ -561,7 +604,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dick_Enberg -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dick_Enberg">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVII_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XV_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXII_edition"/>
@@ -584,8 +627,17 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Frank_Gifford -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Frank_Gifford">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIX_edition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Freddie_Falcon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Freddie_Falcon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Atlanta_Falcons"/>
     </owl:NamedIndividual>
     
 
@@ -603,9 +655,18 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Greg_Gumbel -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Greg_Gumbel">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVVV_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVIII_edition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Gumbo_the_dog -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Gumbo_the_dog">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_Orleans_Saints"/>
     </owl:NamedIndividual>
     
 
@@ -680,7 +741,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jalen_Hurts -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jalen_Hurts">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Draft"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <EtudieA rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d&apos;Oklahoma"/>
         <Va_Rejoindre_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Philadelphia_Eagles"/>
     </owl:NamedIndividual>
@@ -690,7 +751,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jim_Nantz -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jim_Nantz">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIII_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LV_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#L_edition"/>
@@ -704,7 +765,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joe_Buck -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joe_Buck">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVIII_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLV_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXLII_edition"/>
@@ -726,7 +787,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#John_Madden -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#John_Madden">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIII_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXI_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVI_edition"/>
@@ -746,7 +807,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kliff_Kingsbury -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kliff_Kingsbury">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <Entraine_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arizona_Cardinals"/>
     </owl:NamedIndividual>
     
@@ -830,7 +891,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Merlin_Olsen -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Merlin_Olsen">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVII_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XV_edition"/>
     </owl:NamedIndividual>
@@ -858,6 +919,15 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mike_Tomlin">
         <Entraine_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Pittsburgh_Steelers"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Miles -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Miles">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Denver_Broncos"/>
     </owl:NamedIndividual>
     
 
@@ -919,7 +989,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Nick_Sirianni -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Nick_Sirianni">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <Entraine_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Philadelphia_Eagles"/>
     </owl:NamedIndividual>
     
@@ -937,7 +1007,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Pat_Summerall -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Pat_Summerall">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XII_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIV_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVIII_edition"/>
@@ -949,6 +1019,17 @@
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXI_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVI_edition"/>
         <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#X_edition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Phil_Simms -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Phil_Simms">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXII_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXV_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXX_edition"/>
     </owl:NamedIndividual>
     
 
@@ -971,6 +1052,36 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Poe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Poe">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Baltimore_Ravens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Ray_Scott -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Ray_Scott">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#II_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IV_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#I_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VIII_edition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Roary -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Roary">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Detroit_Lions"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#San_Francisco_49ers -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#San_Francisco_49ers">
@@ -983,7 +1094,7 @@
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sean_McDermott -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sean_McDermott">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
     </owl:NamedIndividual>
     
 
@@ -1003,11 +1114,56 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sir_Purr -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sir_Purr">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Carolina_Panthers"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sourdough_Sam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sourdough_Sam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#San_Francisco_49ers"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Staley_Da_Bear -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Staley_Da_Bear">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Chicago_Bears"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Swoop -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Swoop">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mascotte"/>
+        <Est_Possede_Par rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Philadelphia_Eagles"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tampa_Bay_Buccaneers -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tampa_Bay_Buccaneers">
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Ted_Karras -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Ted_Karras">
+        <EtudieA rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d&apos;Illinois"/>
+        <Va_Rejoindre_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Cincinnati_Bengals"/>
     </owl:NamedIndividual>
     
 
@@ -1021,6 +1177,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tony_Romo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tony_Romo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIII_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LV_edition"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Trevon_Walker -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Trevon_Walker">
@@ -1030,10 +1196,20 @@
     
 
 
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Troy_Aikman -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Troy_Aikman">
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLII_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLV_edition"/>
+        <CommenteSuperbowl rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIX_edition"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tyreek_Hill -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tyreek_Hill">
-        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Draft"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Personne"/>
         <EtudieA rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_de_West_Alabama"/>
         <Va_Rejoindre_Equipe rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Miami_Dolphins"/>
     </owl:NamedIndividual>
@@ -1444,6 +1620,12 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#X_edition">
         <rdf:type rdf:resource="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Superbowl"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d&apos;Illinois -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d&apos;Illinois"/>
     
 
 
