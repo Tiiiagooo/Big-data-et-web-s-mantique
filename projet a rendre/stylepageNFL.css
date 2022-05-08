@@ -2,6 +2,9 @@ body{
 	text-align : center;
 	background-color: LightGrey;
 }
+h1{
+	margin-top: 50px;
+}
 div.a{
 	background-color: DarkSlateGray;
 	text-align: center;
@@ -13,7 +16,7 @@ div.a{
 	padding: 0;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
+	margin-top: 10%;
 }
 /*div.b{
 	background-color: DarkSlateGray;
