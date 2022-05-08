@@ -7,19 +7,23 @@
 	<h1>Ontologie NFL</h1>
 	<div class ="a">
 		<div id="p-search" role="search">
+		<div class="searchform">
+            <div id="searchform" class="searchform">
 			<h3>
-				<label for="searchInput">Rechercher</label>
+				<label for="searchfield">
+                    rechercher ontologie NFL
+                </label>
 			</h3>
-			<form action="/index.php" id="searchform">
-			<div id="simpleSearch">
-				<input type="search" name="search" placeholder="Rechercher dans ontologie NFL" title="Rechercher dans ontologie NFL" accesskey="f" id="searchInput" tabindex="1" autocomplete="off">
-				<input type="hidden" value="Spécial:Recherche" name="title">
-				<input type="submit" name="go" value="Rechercher" title="Accédez à une page du même nom si elle existe" id="searchButton" class="searchButton">
-			</div>
+			<form action="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2" method="get" id="searchform">
+			<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+			<div>
+            <input id="searchfield" name="term" arial-label="rechercher" type="text" class="input-default ui-autocomplete-input" autocomplete="off" required="">
+			<input title="Rechercher" value="" type="submit" arial-label="rechercher">
 			</form>
+			</div>
 		</div>
 	</div>
-	<div class ="b">
+	<!-- <div class ="b">
 		<div style="padding-top: 3%;">
 			<div style="display: flex; justify-content: center;">
 				<div style="display: grid; grid-template-columns: minmax(0px, 600px) auto; align-items: center;">
@@ -31,6 +35,22 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<!-- <div class ="c">
+	<div class="searchform">
+                    <div id="searchform" class="searchform">
+                        <form action="http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2" method="get">
+                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                            <div>
+                                <input id="searchfield" name="term" arial-label="rechercher" type="text" class="input-default ui-autocomplete-input" autocomplete="off" required="">
+                                <label for="searchfield">
+                                    rechercher ontologie NFL
+                                </label>
+                                <input title="Rechercher" value="" type="submit" arial-label="rechercher">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+	</div> -->
 </body>
 </html>

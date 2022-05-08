@@ -13,9 +13,9 @@ div.a{
 	padding: 0;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 150px;
+	margin-top: 50px;
 }
-div.b{
+/*div.b{
 	background-color: DarkSlateGray;
 	text-align: center;
 	width: 500px;
@@ -27,9 +27,22 @@ div.b{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50%;
+}*/
+/*div.c{
+		background-color: DarkSlateGray;
+	text-align: center;
+	width: 500px;
+	height: 100px;
+	padding: 5px;
+	border: 1px solid blue;
+	margin: 0;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
 }
-
-élément {
-  display: grid;
-  grid-template-columns: minmax(0px, 600px) auto;
-  align-items: center;
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}*/
