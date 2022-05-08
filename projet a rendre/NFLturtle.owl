@@ -12,12 +12,16 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#A_perdu
-:A_perdu rdf:type owl:ObjectProperty .
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#A_Rival
+:A_Rival rdf:type owl:ObjectProperty ,
+                  owl:SymmetricProperty ;
+         rdfs:domain :Equipe ;
+         rdfs:range :Equipe .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#CommenteSuperbowl
 :CommenteSuperbowl rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :Est_commenté_par ;
                    rdfs:domain :Annonceur ;
                    rdfs:range :Superbowl .
 
@@ -25,7 +29,6 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraine_Equipe
 :Entraine_Equipe rdf:type owl:ObjectProperty ;
                  owl:inverseOf :a_Entraineur ;
-                 rdf:type owl:InverseFunctionalProperty ;
                  rdfs:domain :Entraîneur ;
                  rdfs:range :Equipe .
 
@@ -39,32 +42,34 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Est_Remporté_Par
 :Est_Remporté_Par rdf:type owl:ObjectProperty ;
-                  owl:inverseOf :remporte .
+                  owl:inverseOf :remporte ;
+                  rdfs:domain :Superbowl ;
+                  rdfs:range :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Est_commenté_par
+:Est_commenté_par rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Superbowl ;
+                  rdfs:range :Annonceur .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#EtudieA
 :EtudieA rdf:type owl:ObjectProperty ;
+         owl:inverseOf :Possede_Etudiant ;
          rdfs:domain :Draft ;
          rdfs:range :Universite .
-
-
-###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joue_dans
-:Joue_dans rdf:type owl:ObjectProperty ;
-           rdfs:domain :AFC_EST ,
-                       :AFC_NORD ,
-                       :AFC_OUEST ,
-                       :AFC_SUD ;
-           rdfs:range :Conference_AFC .
-
-
-###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Participe
-:Participe rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede
 :Possede rdf:type owl:ObjectProperty ;
          rdfs:domain :Equipe ;
          rdfs:range :Mascotte .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Possede_Etudiant
+:Possede_Etudiant rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Universite ;
+                  rdfs:range :Draft .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Va_Rejoindre_Equipe
@@ -74,8 +79,7 @@
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_Entraineur
-:a_Entraineur rdf:type owl:ObjectProperty ,
-                       owl:InverseFunctionalProperty ;
+:a_Entraineur rdf:type owl:ObjectProperty ;
               rdfs:domain :Equipe ;
               rdfs:range :Entraîneur .
 
@@ -91,12 +95,23 @@
 #################################################################
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_etat
-:a_etat rdf:type owl:DatatypeProperty .
+:a_etat rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Equipe .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#a_ete_cree_en
 :a_ete_cree_en rdf:type owl:DatatypeProperty ;
                rdfs:domain :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#couleur_uniforme
+:couleur_uniforme rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Equipe .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#has_name
+:has_name rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Equipe .
 
 
 #################################################################
@@ -105,7 +120,10 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_EST
 :AFC_EST rdf:type owl:Class ;
-         rdfs:subClassOf :Conference_AFC .
+         rdfs:subClassOf :Conference_AFC ;
+         owl:disjointWith :AFC_NORD ,
+                          :AFC_OUEST ,
+                          :AFC_SUD .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#AFC_NORD
@@ -125,11 +143,14 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Annonceur
 :Annonceur rdf:type owl:Class ;
-           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                 owl:onProperty :CommenteSuperbowl ;
-                                 owl:someValuesFrom :Superbowl
+           owl:equivalentClass [ owl:intersectionOf ( :Personne
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :CommenteSuperbowl ;
+                                                        owl:someValuesFrom :Superbowl
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
                                ] ;
-           rdfs:subClassOf :Personne ;
            owl:disjointWith :Entraîneur ,
                             :Equipe ,
                             :Mascotte .
@@ -147,7 +168,8 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_AFC
 :Conference_AFC rdf:type owl:Class ;
-                rdfs:subClassOf :Division .
+                rdfs:subClassOf :Division ;
+                owl:disjointWith :Conference_NFC .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Conference_NFC
@@ -173,25 +195,20 @@
                                                   ]
                                                 ) ;
                              rdf:type owl:Class
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :EtudieA ;
-                             owl:someValuesFrom :Universite
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :Va_Rejoindre_Equipe ;
-                             owl:someValuesFrom :Equipe
-                           ] ;
-       rdfs:subClassOf :Personne .
+                           ] .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Entraîneur
 :Entraîneur rdf:type owl:Class ;
-            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :Entraine_Equipe ;
-                                  owl:someValuesFrom :Equipe
+            owl:equivalentClass [ owl:intersectionOf ( :Personne
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :Entraine_Equipe ;
+                                                         owl:someValuesFrom :Equipe
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
                                 ] ;
-            rdfs:subClassOf :Personne .
+            rdfs:subClassOf :NFL .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Equipe
@@ -224,17 +241,20 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_EST
 :NFC_EST rdf:type owl:Class ;
-         rdfs:subClassOf :Conference_NFC .
+         rdfs:subClassOf :Conference_NFC ;
+         owl:disjointWith :NFC_OUEST .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_NORD
 :NFC_NORD rdf:type owl:Class ;
-          rdfs:subClassOf :Conference_NFC .
+          rdfs:subClassOf :Conference_NFC ;
+          owl:disjointWith :NFC_OUEST .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_OUEST
 :NFC_OUEST rdf:type owl:Class ;
-           rdfs:subClassOf :Conference_NFC .
+           rdfs:subClassOf :Conference_NFC ;
+           owl:disjointWith :NFC_SUD .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#NFC_SUD
@@ -265,7 +285,8 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Al_Michaels
 :Al_Michaels rdf:type owl:NamedIndividual ,
-                      :Annonceur ;
+                      :Annonceur ,
+                      :Personne ;
              :CommenteSuperbowl :LII_edition ,
                                 :LVI_edition ,
                                 :XLIII_edition ,
@@ -279,34 +300,69 @@
                                 :XXXVII_edition .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Andy_Reid
+:Andy_Reid rdf:type owl:NamedIndividual ,
+                    :Personne .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arizona_Cardinals
 :Arizona_Cardinals rdf:type owl:NamedIndividual ,
-                            :AFC_OUEST ;
-                   :Possede :Big_Red .
+                            :NFC_OUEST ;
+                   :A_Rival :Chicago_Bears ,
+                            :Los_Angeles_Rams ,
+                            :Seattle_Seahawks ;
+                   :Possede :Big_Red ;
+                   :a_etat "Arizona" ;
+                   :a_ete_cree_en 1898 ;
+                   :has_name "Arizona Cardinals" .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Arthur_Smith
+:Arthur_Smith rdf:type owl:NamedIndividual ,
+                       :Entraîneur ,
+                       :Personne ;
+              :Entraine_Equipe :Atlanta_Falcons .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Atlanta_Falcons
 :Atlanta_Falcons rdf:type owl:NamedIndividual ,
                           :Equipe ,
-                          :NFC_SUD .
+                          :NFC_SUD ;
+                 :A_Rival :Carolina_Panthers ,
+                          :New_Orleans_Saints ,
+                          :Philadelphia_Eagles ,
+                          :Tampa_Bay_Buccaneers ;
+                 :a_etat "Géorgie" ;
+                 :a_ete_cree_en "30 juin 1965" ;
+                 :has_name "Atlanta Falcons" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Baltimore_Ravens
 :Baltimore_Ravens rdf:type owl:NamedIndividual ,
                            :AFC_NORD ,
-                           :Equipe .
+                           :Equipe ;
+                  :A_Rival :New_England_Patriots ,
+                           :Pittsburgh_Steelers ;
+                  :remporte :XLVII_edition ,
+                            :XXXV_edition ;
+                  :a_etat "Maryland" ;
+                  :a_ete_cree_en 1996 ;
+                  :has_name "Baltimore Ravens" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Big_Red
-:Big_Red rdf:type owl:NamedIndividual ,
-                  :Mascotte ;
-         :Est_Possede_Par :Arizona_Cardinals .
+:Big_Red rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Bill_Belichick
+:Bill_Belichick rdf:type owl:NamedIndividual ,
+                         :Personne ;
+                :Entraine_Equipe :New_England_Patriots .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Billy_Buffalo
 :Billy_Buffalo rdf:type owl:NamedIndividual ,
-                        :Mascotte ;
-               :Est_Possede_Par :Buffalo_Bills .
+                        :Mascotte .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Blitz
@@ -317,15 +373,20 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Brandon_Stanley
 :Brandon_Stanley rdf:type owl:NamedIndividual ,
-                          :Entraîneur ;
+                          :Personne ;
                  :Entraine_Equipe :Los_Angeles_Chargers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Buffalo_Bills
 :Buffalo_Bills rdf:type owl:NamedIndividual ,
                         :AFC_EST ;
+               :A_Rival :Miami_Dolphins ,
+                        :New_York_Jets ;
                :Possede :Billy_Buffalo ;
-               :a_Entraineur :Sean_McDermott .
+               :a_Entraineur :Sean_McDermott ;
+               :a_etat "New York" ;
+               :a_ete_cree_en 1959 ;
+               :has_name "Buffalo Bills" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Captain_Fear
@@ -337,35 +398,59 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Carolina_Panthers
 :Carolina_Panthers rdf:type owl:NamedIndividual ,
                             :Equipe ,
-                            :NFC_SUD .
+                            :NFC_SUD ;
+                   :A_Rival :Tampa_Bay_Buccaneers ;
+                   :a_etat "Caroline du Nord" ;
+                   :a_ete_cree_en 1993 ;
+                   :couleur_uniforme "Noir, Bleu, Argent" ;
+                   :has_name "Carolina Panthers" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Chicago_Bears
 :Chicago_Bears rdf:type owl:NamedIndividual ,
                         :Equipe ,
-                        :NFC_NORD .
+                        :NFC_NORD ;
+               :A_Rival :Detroit_Lions ,
+                        :Green_Bay_Packers ,
+                        :Minnesota_Vikings ,
+                        :New_York_Giants ;
+               :remporte :XX_edition ;
+               :a_etat "Illinois" ;
+               :a_ete_cree_en "17 septembre 1920" ;
+               :has_name "Chicago Bears" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Chris_Collinsworth
 :Chris_Collinsworth rdf:type owl:NamedIndividual ,
-                             :Annonceur .
+                             :Personne .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Cincinnati_Bengals
 :Cincinnati_Bengals rdf:type owl:NamedIndividual ,
                              :AFC_NORD ,
-                             :Equipe .
+                             :Equipe ;
+                    :a_Entraineur :Zac_Taylor ;
+                    :a_ete_cree_en 1967 ;
+                    :couleur_uniforme "Noir, Orange, Blanc" ;
+                    :has_name "Cincinnati Bengals" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Cleveland_Browns
 :Cleveland_Browns rdf:type owl:NamedIndividual ,
                            :AFC_NORD ,
-                           :Equipe .
+                           :Equipe ;
+                  :A_Rival :Baltimore_Ravens ,
+                           :Cincinnati_Bengals ,
+                           :Pittsburgh_Steelers ;
+                  :a_etat "Ohio" ;
+                  :a_ete_cree_en 1944 ;
+                  :couleur_uniforme "Marron, Orange, Blanc" ;
+                  :has_name "Cleaveland Browns" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Curt_Gowdy
 :Curt_Gowdy rdf:type owl:NamedIndividual ,
-                     :Annonceur ;
+                     :Personne ;
             :CommenteSuperbowl :III_edition ,
                                :IX_edition ,
                                :VII_edition ,
@@ -376,7 +461,21 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dallas_Cowboys
 :Dallas_Cowboys rdf:type owl:NamedIndividual ,
                          :Equipe ,
-                         :NFC_EST .
+                         :NFC_EST ;
+                :remporte :VI_edition ,
+                          :XII_edition ,
+                          :XXVIII_edition ,
+                          :XXVII_edition ,
+                          :XXX_edition ;
+                :a_etat "Texas" ;
+                :a_ete_cree_en "28 janvier 1960" ;
+                :has_name "Dallas Cowboys" .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dan_Campbell
+:Dan_Campbell rdf:type owl:NamedIndividual ,
+                       :Entraîneur ,
+                       :Personne .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dan_Dierdorf
@@ -384,21 +483,39 @@
               :CommenteSuperbowl :XXII_edition .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dennis_Allen
+:Dennis_Allen rdf:type owl:NamedIndividual ,
+                       :Personne ;
+              :Entraine_Equipe :New_Orleans_Saints .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Denver_Broncos
 :Denver_Broncos rdf:type owl:NamedIndividual ,
                          :AFC_OUEST ,
-                         :Equipe .
+                         :Equipe ;
+                :remporte :L_edition ,
+                          :XXXIII_edition ,
+                          :XXXII_edition ;
+                :a_etat "Colorado" ;
+                :a_ete_cree_en "14 août 1959" ;
+                :has_name "Denver Broncos" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Detroit_Lions
 :Detroit_Lions rdf:type owl:NamedIndividual ,
                         :Equipe ,
-                        :NFC_NORD .
+                        :NFC_NORD ;
+               :A_Rival :Green_Bay_Packers ;
+               :a_Entraineur :Dan_Campbell ;
+               :a_etat "Michigan" ;
+               :a_ete_cree_en 1930 ;
+               :couleur_uniforme "Bleu, Argent" ;
+               :has_name "Detroit Lions" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Dick_Enberg
 :Dick_Enberg rdf:type owl:NamedIndividual ,
-                      :Annonceur ;
+                      :Personne ;
              :CommenteSuperbowl :XVII_edition ,
                                 :XV_edition ,
                                 :XXII_edition ,
@@ -413,9 +530,16 @@
               :CommenteSuperbowl :XIX_edition .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Doug_Pederson
+:Doug_Pederson rdf:type owl:NamedIndividual ,
+                        :Entraîneur ,
+                        :Personne ;
+               :Entraine_Equipe :Jacksonville_Jaguars .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Frank_Gifford
 :Frank_Gifford rdf:type owl:NamedIndividual ,
-                        :Annonceur ;
+                        :Personne ;
                :CommenteSuperbowl :XIX_edition .
 
 
@@ -429,14 +553,20 @@
 :Green_Bay_Packers rdf:type owl:NamedIndividual ,
                             :Equipe ,
                             :NFC_NORD ;
-                   :remporte :I_edition .
+                   :remporte :II_edition ,
+                             :I_edition ,
+                             :XLV_edition ,
+                             :XXXI_edition ;
+                   :a_etat "Wisconsin" ;
+                   :a_ete_cree_en "11 aoùut 1919" ;
+                   :couleur_uniforme "Vert foncé, Or, Blanc" ;
+                   :has_name "Green Bay Packers" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Greg_Gumbel
 :Greg_Gumbel rdf:type owl:NamedIndividual ,
-                      :Annonceur ;
-             :CommenteSuperbowl :XVVV_edition ,
-                                :XXXVIII_edition .
+                      :Personne ;
+             :CommenteSuperbowl :XXXVIII_edition .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Gumbo_the_dog
@@ -448,56 +578,79 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Houston_Texans
 :Houston_Texans rdf:type owl:NamedIndividual ,
                          :AFC_SUD ,
-                         :Equipe .
+                         :Equipe ;
+                :A_Rival :Dallas_Cowboys ,
+                         :Indianapolis_Colts ,
+                         :Tennessee_Titans ;
+                :a_etat "Texas" ;
+                :a_ete_cree_en "6 octobre 1999" ;
+                :couleur_uniforme "Bleu foncé, Rouge, Blanc" ;
+                :has_name "Houston Texans" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#III_edition
 :III_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :New_York_Jets .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#II_edition
 :II_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Green_Bay_Packers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IV_edition
 :IV_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Kansas_City_Chiefs .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#IX_edition
 :IX_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Pittsburgh_Steelers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#I_edition
 :I_edition rdf:type owl:NamedIndividual ,
-                    :Superbowl .
+                    :Superbowl ;
+           :Est_Remporté_Par :Green_Bay_Packers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Indianapolis_Colts
 :Indianapolis_Colts rdf:type owl:NamedIndividual ,
                              :AFC_SUD ,
-                             :Equipe .
+                             :Equipe ;
+                    :A_Rival :Miami_Dolphins ,
+                             :New_England_Patriots ;
+                    :remporte :XLI_edition ;
+                    :a_etat "Indiana" ;
+                    :a_ete_cree_en "23 janvier 1953" ;
+                    :has_name "Indianapolis Colts" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jacksonville_Jaguars
 :Jacksonville_Jaguars rdf:type owl:NamedIndividual ,
                                :AFC_SUD ,
-                               :Equipe .
+                               :Equipe ;
+                      :A_Rival :Indianapolis_Colts ,
+                               :Tennessee_Titans ;
+                      :a_etat "Floride" ;
+                      :a_ete_cree_en 1993 ;
+                      :has_name "Jacksonville Jaguars" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jalen_Hurts
 :Jalen_Hurts rdf:type owl:NamedIndividual ,
-                      :Draft ;
+                      :Personne ;
              :EtudieA <http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d'Oklahoma> ;
              :Va_Rejoindre_Equipe :Philadelphia_Eagles .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jim_Nantz
 :Jim_Nantz rdf:type owl:NamedIndividual ,
-                    :Annonceur ;
+                    :Personne ;
            :CommenteSuperbowl :LIII_edition ,
                               :LV_edition ,
                               :L_edition ,
@@ -508,10 +661,9 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Joe_Buck
 :Joe_Buck rdf:type owl:NamedIndividual ,
-                   :Annonceur ;
+                   :Personne ;
           :CommenteSuperbowl :XLVIII_edition ,
                              :XLV_edition ,
-                             :XXLII_edition ,
                              :XXXIX_edition .
 
 
@@ -522,77 +674,144 @@
                                 :XI_edition .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#John_Harbaugh
+:John_Harbaugh rdf:type owl:NamedIndividual ,
+                        :Personne ;
+               :Entraine_Equipe :Baltimore_Ravens .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#John_Madden
 :John_Madden rdf:type owl:NamedIndividual ,
-                      :Annonceur ;
+                      :Personne ;
              :CommenteSuperbowl :XXXIII_edition ,
                                 :XXXI_edition ,
                                 :XXXVI_edition .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Jon_Gruden
+:Jon_Gruden rdf:type owl:NamedIndividual ,
+                     :Personne ;
+            :Entraine_Equipe :Oakland_Raiders .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kansas_City_Chiefs
 :Kansas_City_Chiefs rdf:type owl:NamedIndividual ,
                              :AFC_OUEST ,
-                             :Equipe .
+                             :Equipe ;
+                    :a_Entraineur :Andy_Reid ;
+                    :remporte :IV_edition ,
+                              :LIV_edition ;
+                    :a_ete_cree_en 1959 ;
+                    :couleur_uniforme "Missouri" ;
+                    :has_name "Kansas City Chiefs" .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kevin_Stefanski
+:Kevin_Stefanski rdf:type owl:NamedIndividual ,
+                          :Entraîneur ,
+                          :Personne ;
+                 :Entraine_Equipe :Cleveland_Browns .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kliff_Kingsbury
 :Kliff_Kingsbury rdf:type owl:NamedIndividual ,
-                          :Entraîneur ;
+                          :Personne ;
                  :Entraine_Equipe :Arizona_Cardinals .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kyle_Shanahan
+:Kyle_Shanahan rdf:type owl:NamedIndividual ,
+                        :Personne ;
+               :Entraine_Equipe :San_Francisco_49ers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIII_edition
 :LIII_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :New_England_Patriots .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LII_edition
 :LII_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Philadelphia_Eagles .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LIV_edition
 :LIV_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Kansas_City_Chiefs .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LI_edition
 :LI_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :New_England_Patriots .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LVI_edition
 :LVI_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Los_Angeles_Rams .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#LV_edition
 :LV_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Tampa_Bay_Buccaneers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#L_edition
 :L_edition rdf:type owl:NamedIndividual ,
-                    :Superbowl .
+                    :Superbowl ;
+           :Est_Remporté_Par :Denver_Broncos .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Los_Angeles_Chargers
 :Los_Angeles_Chargers rdf:type owl:NamedIndividual ,
                                :AFC_OUEST ,
-                               :Equipe .
+                               :Equipe ;
+                      :a_etat "Californie" ;
+                      :a_ete_cree_en "14 août 1959" ;
+                      :couleur_uniforme "Bleu, Or, Blanc" ;
+                      :has_name "Los Angeles Chargers" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Los_Angeles_Rams
 :Los_Angeles_Rams rdf:type owl:NamedIndividual ,
                            :Equipe ,
                            :NFC_OUEST ;
-                  :a_Entraineur :Sean_McVay .
+                  :A_Rival :Dallas_Cowboys ,
+                           :Minnesota_Vikings ,
+                           :New_England_Patriots ;
+                  :a_Entraineur :Sean_McVay ;
+                  :remporte :XXXIV_edition ;
+                  :a_etat "Californie" ;
+                  :a_ete_cree_en 1936 ;
+                  :has_name "Los Angeles Rams" .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Lovie_Smith
+:Lovie_Smith rdf:type owl:NamedIndividual ,
+                      :Personne ;
+             :Entraine_Equipe :Houston_Texans .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Matt_Eberflus
+:Matt_Eberflus rdf:type owl:NamedIndividual ,
+                        :Personne .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Matt_Rhule
+:Matt_Rhule rdf:type owl:NamedIndividual ,
+                     :Personne ;
+            :Entraine_Equipe :Carolina_Panthers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Merlin_Olsen
 :Merlin_Olsen rdf:type owl:NamedIndividual ,
-                       :Annonceur ;
+                       :Annonceur ,
+                       :Personne ;
               :CommenteSuperbowl :XVII_edition ,
                                  :XV_edition .
 
@@ -600,7 +819,12 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Miami_Dolphins
 :Miami_Dolphins rdf:type owl:NamedIndividual ,
                          :AFC_EST ,
-                         :Equipe .
+                         :Equipe ;
+                :remporte :VIII_edition ;
+                :a_etat "Floride" ;
+                :a_ete_cree_en "16 août 1965" ;
+                :couleur_uniforme "Bleu marine, Orange, Blanc" ;
+                :has_name "Miami Dolphins" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mike_McDaniel
@@ -622,7 +846,12 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Minnesota_Vikings
 :Minnesota_Vikings rdf:type owl:NamedIndividual ,
                             :Equipe ,
-                            :NFC_NORD .
+                            :NFC_NORD ;
+                   :A_Rival :Green_Bay_Packers ,
+                            :New_Orleans_Saints ;
+                   :a_etat "Minnesota" ;
+                   :a_ete_cree_en 1960 ;
+                   :has_name "Minnesota Vikings" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Mitchell_Trubisky
@@ -634,42 +863,73 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_England_Patriots
 :New_England_Patriots rdf:type owl:NamedIndividual ,
                                :AFC_EST ,
-                               :Equipe .
+                               :Equipe ;
+                      :remporte :LIII_edition ,
+                                :LI_edition ,
+                                :XLIX_edition ,
+                                :XXXIX_edition ,
+                                :XXXVIII_edition ,
+                                :XXXVI_edition ;
+                      :has_name "New England Patriots" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_Orleans_Saints
 :New_Orleans_Saints rdf:type owl:NamedIndividual ,
                              :Equipe ,
-                             :NFC_SUD .
+                             :NFC_SUD ;
+                    :A_Rival :Carolina_Panthers ,
+                             :Tampa_Bay_Buccaneers ;
+                    :remporte :XLIV_edition ;
+                    :a_etat "Louisiana" ;
+                    :a_ete_cree_en 1966 ;
+                    :couleur_uniforme "Brun, Noir, Blanc" ;
+                    :has_name "New Orleans Saints" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_York_Giants
 :New_York_Giants rdf:type owl:NamedIndividual ,
                           :Equipe ,
-                          :NFC_EST .
+                          :NFC_EST ;
+                 :A_Rival :Dallas_Cowboys ,
+                          :Philadelphia_Eagles ,
+                          :San_Francisco_49ers ;
+                 :remporte :XLVI_edition ,
+                           :XXI_edition ,
+                           :XXV_edition ;
+                 :a_etat "New York" ;
+                 :a_ete_cree_en 1925 ;
+                 :has_name "New York Giants" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#New_York_Jets
 :New_York_Jets rdf:type owl:NamedIndividual ,
                         :AFC_EST ,
-                        :Equipe .
+                        :Equipe ;
+               :has_name "New York Jets" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Nick_Sirianni
 :Nick_Sirianni rdf:type owl:NamedIndividual ,
-                        :Entraîneur ;
+                        :Personne ;
                :Entraine_Equipe :Philadelphia_Eagles .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Oakland_Raiders
 :Oakland_Raiders rdf:type owl:NamedIndividual ,
                           :AFC_OUEST ,
-                          :Equipe .
+                          :Equipe ;
+                 :remporte :XI_edition ,
+                           :XVIII_edition ,
+                           :XV_edition ;
+                 :a_etat "Califorrnie" ;
+                 :a_ete_cree_en 1960 ;
+                 :couleur_uniforme "Argent, Noir, Blanc" ;
+                 :has_name "Oakland Raiders" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Pat_Summerall
 :Pat_Summerall rdf:type owl:NamedIndividual ,
-                        :Annonceur ;
+                        :Personne ;
                :CommenteSuperbowl :XII_edition ,
                                   :XIV_edition ,
                                   :XVIII_edition ,
@@ -683,22 +943,59 @@
                                   :X_edition .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Pete_Carroll
+:Pete_Carroll rdf:type owl:NamedIndividual ,
+                       :Personne .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Phil_Simms
+:Phil_Simms rdf:type owl:NamedIndividual ,
+                     :Personne ;
+            :CommenteSuperbowl :XXXII_edition ,
+                               :XXXV_edition ,
+                               :XXX_edition .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Philadelphia_Eagles
 :Philadelphia_Eagles rdf:type owl:NamedIndividual ,
                               :Equipe ,
-                              :NFC_EST .
+                              :NFC_EST ;
+                     :remporte :LII_edition ;
+                     :a_etat "Philadelphie" ;
+                     :a_ete_cree_en 1933 ;
+                     :couleur_uniforme "Vert turquoise, Argent, Noir, Blanc" ;
+                     :has_name "Philadelphia Eagles" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Pittsburgh_Steelers
 :Pittsburgh_Steelers rdf:type owl:NamedIndividual ,
                               :AFC_NORD ,
-                              :Equipe .
+                              :Equipe ;
+                     :remporte :IX_edition ,
+                               :XIII_edition ,
+                               :XIV_edition ,
+                               :XLIII_edition ,
+                               :XL_edition ,
+                               :X_edition ;
+                     :a_etat "Pennsylvania" ;
+                     :a_ete_cree_en "8 juin 1933" ;
+                     :couleur_uniforme "Noir, Or" ;
+                     :has_name "Pittsburgh Steelers" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Poe
 :Poe rdf:type owl:NamedIndividual ,
               :Mascotte ;
      :Est_Possede_Par :Baltimore_Ravens .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Ray_Scott
+:Ray_Scott rdf:type owl:NamedIndividual ,
+                    :Personne ;
+           :CommenteSuperbowl :II_edition ,
+                              :IV_edition ,
+                              :I_edition ,
+                              :VIII_edition .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Roary
@@ -710,12 +1007,19 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#San_Francisco_49ers
 :San_Francisco_49ers rdf:type owl:NamedIndividual ,
                               :Equipe ,
-                              :NFC_OUEST .
+                              :NFC_OUEST ;
+                     :remporte :XIII_edition ,
+                               :XIX_edition ,
+                               :XVI_edition ;
+                     :a_etat "Californie" ;
+                     :a_ete_cree_en 1944 ;
+                     :couleur_uniforme "Rouge, Or, Blanc" ;
+                     :has_name "San Francisco 49ers" .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sean_McDermott
 :Sean_McDermott rdf:type owl:NamedIndividual ,
-                         :Entraîneur .
+                         :Personne .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sean_McVay
@@ -725,7 +1029,22 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Seattle_Seahawks
 :Seattle_Seahawks rdf:type owl:NamedIndividual ,
                            :Equipe ,
-                           :NFC_OUEST .
+                           :NFC_OUEST ;
+                  :A_Rival :Denver_Broncos ,
+                           :Green_Bay_Packers ,
+                           :Los_Angeles_Rams ,
+                           :San_Francisco_49ers ;
+                  :a_Entraineur :Pete_Carroll ;
+                  :remporte :XLVIII_edition ;
+                  :a_etat "Washington" ;
+                  :a_ete_cree_en 1974 ;
+                  :has_name "Seattle Seahawks" .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sir_Purr
+:Sir_Purr rdf:type owl:NamedIndividual ,
+                   :Mascotte ;
+          :Est_Possede_Par :Carolina_Panthers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Sourdough_Sam
@@ -749,7 +1068,18 @@
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tampa_Bay_Buccaneers
 :Tampa_Bay_Buccaneers rdf:type owl:NamedIndividual ,
                                :Equipe ,
-                               :NFC_SUD .
+                               :NFC_SUD ;
+                      :remporte :LV_edition ,
+                                :XXXVII_edition ;
+                      :a_etat "Floride" ;
+                      :a_ete_cree_en 1974 ;
+                      :has_name "Tampa Bay Buccaneers" .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Ted_Karras
+:Ted_Karras rdf:type owl:NamedIndividual ;
+            :EtudieA <http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d'Illinois> ;
+            :Va_Rejoindre_Equipe :Cincinnati_Bengals .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tennessee_Titans
@@ -758,15 +1088,36 @@
                            :Equipe .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Todd_Bowles
+:Todd_Bowles rdf:type owl:NamedIndividual ,
+                      :Personne ;
+             :Entraine_Equipe :Tampa_Bay_Buccaneers .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tony_Romo
+:Tony_Romo rdf:type owl:NamedIndividual ,
+                    :Personne ;
+           :CommenteSuperbowl :LIII_edition ,
+                              :LV_edition .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Trevon_Walker
 :Trevon_Walker rdf:type owl:NamedIndividual ;
                :EtudieA :Université_de_Géorgie ;
                :Va_Rejoindre_Equipe :Jacksonville_Jaguars .
 
 
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Troy_Aikman
+:Troy_Aikman rdf:type owl:NamedIndividual ;
+             :CommenteSuperbowl :XLII_edition ,
+                                :XLV_edition ,
+                                :XXXIX_edition .
+
+
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Tyreek_Hill
 :Tyreek_Hill rdf:type owl:NamedIndividual ,
-                      :Draft ;
+                      :Draft ,
+                      :Personne ;
              :EtudieA :Université_de_West_Alabama ;
              :Va_Rejoindre_Equipe :Miami_Dolphins .
 
@@ -787,243 +1138,300 @@
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VIII_edition
 :VIII_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :Pittsburgh_Steelers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VII_edition
 :VII_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Miami_Dolphins .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#VI_edition
 :VI_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Indianapolis_Colts .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#V_edition
 :V_edition rdf:type owl:NamedIndividual ,
-                    :Superbowl .
+                    :Superbowl ;
+           :Est_Remporté_Par :Indianapolis_Colts .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Viktor_le_Viking
+:Viktor_le_Viking rdf:type owl:NamedIndividual ,
+                           :Personne ;
+                  :Est_Possede_Par :Minnesota_Vikings .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Washington_Redskins
 :Washington_Redskins rdf:type owl:NamedIndividual ,
                               :Equipe ,
-                              :NFC_EST .
+                              :NFC_EST ;
+                     :A_Rival :Dallas_Cowboys ,
+                              :New_York_Giants ,
+                              :Philadelphia_Eagles ;
+                     :remporte :XVII_edition ,
+                               :XXII_edition ;
+                     :a_etat "Virginie" ;
+                     :a_ete_cree_en 1932 .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIII_edition
 :XIII_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :Pittsburgh_Steelers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XII_edition
 :XII_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
-
-
-###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIVL_edition
-:XIVL_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Dallas_Cowboys .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIV_edition
 :XIV_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Pittsburgh_Steelers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XIX_edition
 :XIX_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :San_Francisco_49ers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XI_edition
 :XI_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Oakland_Raiders .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIII_edition
 :XLIII_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :Pittsburgh_Steelers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLII_edition
 :XLII_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :New_York_Giants .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIV_edition
 :XLIV_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :New_Orleans_Saints .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLIX_edition
 :XLIX_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :New_England_Patriots .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLI_edition
 :XLI_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Indianapolis_Colts .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVIII_edition
 :XLVIII_edition rdf:type owl:NamedIndividual ,
-                         :Superbowl .
+                         :Superbowl ;
+                :Est_Remporté_Par :Seattle_Seahawks .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVII_edition
 :XLVII_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :Baltimore_Ravens .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLVI_edition
 :XLVI_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :New_York_Giants .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XLV_edition
 :XLV_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Green_Bay_Packers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XL_edition
 :XL_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Pittsburgh_Steelers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVIII_edition
 :XVIII_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :Oakland_Raiders .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVII_edition
 :XVII_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :Washington_Redskins .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVI_edition
 :XVI_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
-
-
-###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XVVV_edition
-:XVVV_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :San_Francisco_49ers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XV_edition
 :XV_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Oakland_Raiders .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIII_edition
 :XXIII_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :San_Francisco_49ers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXII_edition
 :XXII_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :Washington_Redskins .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIV_edition
 :XXIV_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :San_Francisco_49ers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXIX_edition
 :XXIX_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :San_Francisco_49ers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXI_edition
 :XXI_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
-
-
-###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXLII_edition
-:XXLII_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :New_York_Giants .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVIII_edition
 :XXVIII_edition rdf:type owl:NamedIndividual ,
-                         :Superbowl .
+                         :Superbowl ;
+                :Est_Remporté_Par :Dallas_Cowboys .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVII_edition
 :XXVII_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :Dallas_Cowboys .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXVI_edition
 :XXVI_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :Washington_Redskins .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXV_edition
 :XXV_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :New_York_Giants .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIII_edition
 :XXXIII_edition rdf:type owl:NamedIndividual ,
-                         :Superbowl .
+                         :Superbowl ;
+                :Est_Remporté_Par :Denver_Broncos .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXII_edition
 :XXXII_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :Denver_Broncos .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIV_edition
 :XXXIV_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :Los_Angeles_Rams .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXIX_edition
 :XXXIX_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :New_England_Patriots .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXI_edition
 :XXXI_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :Green_Bay_Packers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVIII_edition
 :XXXVIII_edition rdf:type owl:NamedIndividual ,
-                          :Superbowl .
+                          :Superbowl ;
+                 :Est_Remporté_Par :New_England_Patriots .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVII_edition
 :XXXVII_edition rdf:type owl:NamedIndividual ,
-                         :Superbowl .
+                         :Superbowl ;
+                :Est_Remporté_Par :Tampa_Bay_Buccaneers .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXVI_edition
 :XXXVI_edition rdf:type owl:NamedIndividual ,
-                        :Superbowl .
+                        :Superbowl ;
+               :Est_Remporté_Par :New_England_Patriots .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXXV_edition
 :XXXV_edition rdf:type owl:NamedIndividual ,
-                       :Superbowl .
+                       :Superbowl ;
+              :Est_Remporté_Par :Baltimore_Ravens .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XXX_edition
 :XXX_edition rdf:type owl:NamedIndividual ,
-                      :Superbowl .
+                      :Superbowl ;
+             :Est_Remporté_Par :Dallas_Cowboys .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#XX_edition
 :XX_edition rdf:type owl:NamedIndividual ,
-                     :Superbowl .
+                     :Superbowl ;
+            :Est_Remporté_Par :Chicago_Bears .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#X_edition
 :X_edition rdf:type owl:NamedIndividual ,
-                    :Superbowl .
+                    :Superbowl ;
+           :Est_Remporté_Par :Pittsburgh_Steelers .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Zac_Taylor
+:Zac_Taylor rdf:type owl:NamedIndividual ,
+                     :Personne .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kevin_O'Connell
+<http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Kevin_O'Connell> rdf:type owl:NamedIndividual ,
+                                                                                                  :Personne ;
+                                                                                         :Entraine_Equipe :Minnesota_Vikings .
+
+
+###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d'Illinois
+<http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d'Illinois> rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/andur/ontologies/2022/1/untitled-ontology-2#Université_d'Oklahoma
